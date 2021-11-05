@@ -1,4 +1,4 @@
-  
+
 package ar.com.ada.api.questionados.services;
 
 import java.util.List;
@@ -17,10 +17,9 @@ public class PreguntaService {
 
     @Autowired
     PreguntaRepository repo;
-    
+
     @Autowired
     CategoriaService categoriaService;
-
 
     public Pregunta buscarPreguntaPorId(Integer preguntaId) {
 
@@ -36,19 +35,19 @@ public class PreguntaService {
         return repo.findAll();
     }
 
-    public Pregunta crearPregunta(String enunciado, Integer categoriaId, List<Respuesta> opciones ) {
-        
+    public Pregunta crearPregunta(String enunciado, Integer categoriaId, List<Respuesta> opciones) {
+
         Pregunta pregunta = new Pregunta();
         pregunta.setEnunciado(enunciado);
 
         Categoria categoria = categoriaService.buscarCategoria(categoriaId);
 
         pregunta.setCategoria(categoria);
-      
-        for (Respuesta respuesta: opciones) {
+
+        for (Respuesta respuesta : opciones) {
             respuesta.setPregunta(pregunta);
         }
-        
+
         repo.save(pregunta);
         return pregunta;
     }

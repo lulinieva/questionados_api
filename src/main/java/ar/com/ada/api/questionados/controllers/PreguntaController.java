@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import ar.com.ada.api.questionados.models.request.InfoPreguntaNueva;
 import ar.com.ada.api.questionados.models.response.GenericResponse;
 
-
-
 @RestController
 public class PreguntaController {
 
@@ -28,16 +26,17 @@ public class PreguntaController {
     }
 
     @GetMapping("/preguntas/{id}")
-    public ResponseEntity <Pregunta> buscarPreguntaPorId(@PathVariable Integer id){
+    public ResponseEntity<Pregunta> buscarPreguntaPorId(@PathVariable Integer id) {
 
         return ResponseEntity.ok(service.buscarPreguntaPorId(id));
     }
 
-   @PostMapping ("/preguntas")
-    public ResponseEntity<?> crearPregunta(@RequestBody InfoPreguntaNueva preguntaNueva){
+    @PostMapping("/preguntas")
+    public ResponseEntity<?> crearPregunta(@RequestBody InfoPreguntaNueva preguntaNueva) {
 
         GenericResponse respuesta = new GenericResponse();
-        Pregunta pregunta = service.crearPregunta(preguntaNueva.enunciado, preguntaNueva.categoriaId, preguntaNueva.opciones);
+        Pregunta pregunta = service.crearPregunta(preguntaNueva.enunciado, preguntaNueva.categoriaId,
+                preguntaNueva.opciones);
         respuesta.isOk = true;
         respuesta.id = pregunta.getPreguntaId();
         respuesta.message = "La pregunta fue creada con exito";
@@ -46,4 +45,4 @@ public class PreguntaController {
 
     }
 
- }
+}

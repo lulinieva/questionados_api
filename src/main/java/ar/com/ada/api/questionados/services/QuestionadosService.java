@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ar.com.ada.api.questionados.entities.Pregunta;
 import ar.com.ada.api.questionados.entities.Respuesta;
-import ar.com.ada.api.questionados.models.request.RespuestaAVerificar;
+
 
 @Service
 public class QuestionadosService {
